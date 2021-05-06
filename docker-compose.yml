@@ -1,0 +1,30 @@
+version: '3.9'
+
+services:
+  shipping:
+    image: node:14-alpine
+    working_dir: /packages/shipping/src
+    volumes:
+      - .:/packages/shipping/src
+    ports:
+      - '4001:4000'
+    command: yarn workspace @magalu/nav-gateway-shipping dev
+    environment:
+      NODE_ENV: development
+      DEBUG: shipping:*
+  
+  gateway:
+    image: node:14-alpine
+    working_dir: /src
+    volumes:
+      - .:/src
+    ports:
+      - '4000:4000'
+    command: yarn dev
+    environment:
+      NODE_ENV: development
+      DEBUG: nav-gateway:*
+      SERVICE_SHIPPING_URL: http://shipping:4000/graphql
+      SERVICE_BEEHIVE_URL: https://beehive.magazineluiza.com.br/graphql
+    depends_on:
+      - shipping

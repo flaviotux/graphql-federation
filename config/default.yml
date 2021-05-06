@@ -1,0 +1,3 @@
+services:
+  shipping:
+    url: http://shipping:4000

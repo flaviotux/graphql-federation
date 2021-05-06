@@ -1,0 +1,10 @@
+.jest-cache
+.jest-coverage
+node_modules
+build
+build-esm
+.next
+.lerna-debug.log
+
+**/*-error.log
+**/package-lock.json

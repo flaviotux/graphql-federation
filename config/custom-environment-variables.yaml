@@ -1,0 +1,4 @@
+services:
+  shipping:
+    url: SERVICE_SHIPPING_URL
+
